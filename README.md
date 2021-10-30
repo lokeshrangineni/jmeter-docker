@@ -50,6 +50,14 @@ Copyright (c) 1999-2021 The Apache Software Foundation
 another command
 ```
 
+```shell
+docker run -v `pwd`/tmp:'/tmp' lokesh/jmeter /bin/bash -c "jmeter --version > /tmp/hello.txt"
+```
 
 
+## Running the Benchmarking [UsersDurationSimpleHT.jmx](UsersDurationSimpleHT.jmx) using Jmeter
+Below command will use the docker image to run the test and generate the aggregate report to docker containers /tmp directory. This command also mounts the docker container's `/tmp` directory to `hostPwd/tmp` so that we can see the results after Jmeter benchmark execution is completed in the docker container.
 
+```shell
+docker run -v `pwd`/tmp:'/tmp' lokesh/jmeter /bin/bash -c "jmeter -n -t /opt/UsersDurationSimpleHT.jmx -Jschema=http -Jurl=process-quarkus-example-mpaul-kogito.apps.mpkogito.p9nf.p1.openshiftapps.com -Jusers=60 -Jduration=120 -l /tmp/res0.jtl && JMeterPluginsCMD.sh --generate-csv /tmp/res0.csv --input-jtl /tmp/res0.jtl --plugin-type AggregateReport" 
+```
