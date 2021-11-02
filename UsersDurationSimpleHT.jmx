@@ -60,11 +60,11 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;data&quot;:{&#xd;
-        &quot;testIndex&quot;:${__time()},&#xd;
-        &quot;name&quot;: &quot;Joe&quot;&#xd;
-    }&#xd;
-}</stringProp>
+                  &quot;data&quot;: {&#xd;
+                    &quot;name&quot;: &quot;john&quot;,&#xd;
+                    &quot;testIndex&quot;: 12&#xd;
+                  }&#xd;
+                }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
