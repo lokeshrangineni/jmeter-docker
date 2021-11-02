@@ -61,3 +61,12 @@ Below command will use the docker image to run the test and generate the aggrega
 ```shell
 docker run -v `pwd`/tmp:'/tmp' lokesh/jmeter /bin/bash -c "jmeter -n -t /opt/UsersDurationSimpleHT.jmx -Jschema=http -Jurl=process-quarkus-example-mpaul-kogito.apps.mpkogito.p9nf.p1.openshiftapps.com -Jusers=60 -Jduration=120 -l /tmp/res0.jtl && JMeterPluginsCMD.sh --generate-csv /tmp/res0.csv --input-jtl /tmp/res0.jtl --plugin-type AggregateReport" 
 ```
+
+
+#### Deploy the application using Pod yaml
+
+Use the [pod definition](open-shift-kogito-jmeter-benchmark-pod.yml) to run the Kogito Jmeter benchmark project and upload the report to Noobaa storage. Also prints the report to console log.
+
+If you are new to the Noobaa then refer this [tutorial](https://blog.oddbit.com/post/2021-02-10-object-storage-with-openshift/) and [Noobaa Wiki](https://github.com/noobaa/noobaa-core/wiki).
+
+If you are new to AWS S3 CLIs then refer this [tutorial](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-docker.html)

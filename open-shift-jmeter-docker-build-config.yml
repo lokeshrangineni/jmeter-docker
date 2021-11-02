@@ -1,0 +1,27 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: jmeter-docker-build
+  app: jmeter-docker-benchmark-build
+  namespace: fsi-kogito-benchmarking
+spec:
+  triggers:
+    - type: GitHub
+      github:
+        secret: secret101
+    - type: ImageChange
+      imageChange: {}
+    - type: ConfigChange
+  source:
+    git:
+      ref: main
+      uri: 'https://github.com/lokeshrangineni/jmeter-docker.git'
+    type: Git
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'jmeter-docker:latest'
