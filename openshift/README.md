@@ -11,3 +11,12 @@ oc apply -f open-shift-jmeter-config-map.yml
 **Step2:**
 
 Create the pod using the [Pod Definition](open-shift-kogito-jmeter-benchmark-pod.yml). This pod will automatically trigger the jmeter benchmarking based on the `ConfigMap` configuration.
+
+
+**Step3:**
+
+Once the pod is created and done with the benchmarking use the `oc rsync` command to download the report files available in the pod's `/tmp/jmeter` folder.
+
+```shell
+oc rsync pod-kogito-jmeter-benchmark4:/tmp/jmeter ./test
+```
