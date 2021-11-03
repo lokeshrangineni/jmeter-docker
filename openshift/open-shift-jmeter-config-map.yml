@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kogito-jmeter-benchmark
+  namespace: fsi-kogito-benchmarking
+data:
+  JMETER_BENCHMARK_FILE: UsersDurationSimpleHT.jmx
+  CLIENT_URL: process-quarkus-example-fsi-kogito-benchmarking.apps.mw-ocp4.cloud.lab.eng.bos.redhat.com
+  NUMBER_OF_USERS: "60"
+  DURATION: "60"
+  RESULT_JTL_FILE_PATH: /tmp/jmeter/res0.jtl
+  CSV_REPORT_FILE_PATH: /tmp/jmeter/res0.csv

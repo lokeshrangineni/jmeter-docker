@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-kogito-jmeter-benchmark
+  namespace: fsi-kogito-benchmarking
+  labels:
+    app: kogito-jmeter-benchmark
+spec:
+  restartPolicy: Never
+  containers:
+    - name: run-jmeter-test
+      image: quay.io/lrangine/jmeter:2.0
+      command: ['/bin/bash', '-c', 'jmeter -n -t /opt/$(JMETER_BENCHMARK_FILE) -Jschema=http -Jurl=$(CLIENT_URL) -Jusers=$(NUMBER_OF_USERS) -Jduration=$(DURATION) -l $(RESULT_JTL_FILE_PATH) && JMeterPluginsCMD.sh --generate-csv $(CSV_REPORT_FILE_PATH) --input-jtl $(RESULT_JTL_FILE_PATH) --plugin-type AggregateReport && head -n 40 $(RESULT_JTL_FILE_PATH) && cat $(CSV_REPORT_FILE_PATH)']
+      envFrom:
+        - configMapRef:
+            name: kogito-jmeter-benchmark

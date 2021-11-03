@@ -65,7 +65,7 @@ docker run -v `pwd`/tmp:'/tmp' lokesh/jmeter /bin/bash -c "jmeter -n -t /opt/Use
 
 #### Deploy the application using Pod yaml
 
-Use the [pod definition](open-shift-kogito-jmeter-benchmark-pod.yml) to run the Kogito Jmeter benchmark project and upload the report to Noobaa storage. Also prints the report to console log.
+Use the [pod definition](openshift/open-shift-kogito-jmeter-benchmark-pod.yml) to run the Kogito Jmeter benchmark project and upload the report to Noobaa storage. Also prints the report to console log.
 
 If you are new to the Noobaa then refer this [tutorial](https://blog.oddbit.com/post/2021-02-10-object-storage-with-openshift/) and [Noobaa Wiki](https://github.com/noobaa/noobaa-core/wiki).
 
