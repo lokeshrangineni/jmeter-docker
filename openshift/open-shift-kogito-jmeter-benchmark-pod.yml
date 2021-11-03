@@ -10,7 +10,7 @@ spec:
   containers:
     - name: run-jmeter-test
       image: quay.io/lrangine/jmeter:2.0
-      command: ['/bin/bash', '-c', 'jmeter -n -t /opt/$(JMETER_BENCHMARK_FILE) -Jschema=http -Jurl=$(CLIENT_URL) -Jusers=$(NUMBER_OF_USERS) -Jduration=$(DURATION) -l $(RESULT_JTL_FILE_PATH) && JMeterPluginsCMD.sh --generate-csv $(CSV_REPORT_FILE_PATH) --input-jtl $(RESULT_JTL_FILE_PATH) --plugin-type AggregateReport && head -n 40 $(RESULT_JTL_FILE_PATH) && cat $(CSV_REPORT_FILE_PATH)']
+      command: ['/bin/bash', '-c', 'jmeter -n -t /opt/$(JMETER_BENCHMARK_FILE) -Jschema=http -Jurl=$(CLIENT_URL) -Jusers=$(NUMBER_OF_USERS) -Jduration=$(DURATION) -l $(RESULT_JTL_FILE_PATH) && JMeterPluginsCMD.sh --generate-csv $(CSV_REPORT_FILE_PATH) --input-jtl $(RESULT_JTL_FILE_PATH) --plugin-type AggregateReport && head -n 40 $(RESULT_JTL_FILE_PATH) && cat $(CSV_REPORT_FILE_PATH) && while true; echo "sleeping now for 10 minutes"; do sleep 10m; done;']
       envFrom:
         - configMapRef:
             name: kogito-jmeter-benchmark
